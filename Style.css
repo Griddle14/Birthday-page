@@ -113,3 +113,23 @@ body {
     opacity: 1;
   }
 }
+.heart-glow {
+  font-size: 40px;
+  animation: pulse 1.5s infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    text-shadow: 0 0 5px #ff6f91, 0 0 10px #ff6f91;
+  }
+  50% {
+    transform: scale(1.2);
+    text-shadow: 0 0 15px #ff6f91, 0 0 30px #ff6f91;
+  }
+  100% {
+    transform: scale(1);
+    text-shadow: 0 0 5px #ff6f91, 0 0 10px #ff6f91;
+  }
+}
