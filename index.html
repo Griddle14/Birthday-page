@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday, Pondati! 💖</title>
+  <link rel="stylesheet" href="Style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1>🎉 Happy Birthday, Pondati 🐼💖</h1>
+    <img src="photo .jpg" alt="Us" class="main-img" />
+    <p>
+      You are the light in my life, and today we celebrate the most amazing person I know.<br />
+      I hope this day is filled with love, joy, and everything that makes you smile.<br />
+      I love you always. 💕
+    </p>
+    <button onclick="playSong()">🎶 Play Our Song</button>
+    <audio id="birthdaySong" src="song.mp3"></audio>
+  </div>
+
+  <!-- Confetti effect -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    window.onload = () => {
+      confetti({
+        particleCount: 200,
+        spread: 160,
+        origin: { y: 0.6 }
+      });
+    };
+
+    function playSong() {
+      document.getElementById("birthdaySong").play();
+    }
+  </script>
+</body>
+</html>
