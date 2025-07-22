@@ -8,6 +8,12 @@ body {
   align-items: center;
   min-height: 100vh;
   color: #333;
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .container {
@@ -62,7 +68,7 @@ button {
   font-size: 16px;
   cursor: pointer;
   box-shadow: 0 0 12px #ff69b4;
-  margin-top: 20px;
+  margin-top: 40px;
   transition: all 0.3s ease;
 }
 
@@ -70,6 +76,7 @@ button:hover {
   background: #e91e63;
   box-shadow: 0 0 20px #e91e63;
 }
+
 #playButton {
   position: fixed;
   top: 70%;
@@ -85,34 +92,46 @@ button:hover {
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   z-index: 1000;
 }
-body {
-  animation: fadeIn 1s ease;
-}
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
 @media (max-width: 768px) {
   #playButton {
-    top: 70%; /* adjust as needed for mobile */
+    top: 75%;
     padding: 16px 24px;
     font-size: 16px;
   }
 }
+
 .fade-in-text {
   opacity: 0;
-  animation: fadeIn 2s forwards;
+  animation: fadeInText 2s forwards;
   font-size: 1.2em;
   margin-top: 20px;
   font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #ff69b4;
+  width: 0;
+  animation: typewriter 5s steps(40) 1s forwards, blink 0.75s step-end infinite;
 }
 
-@keyframes fadeIn {
+@keyframes fadeInText {
   to {
     opacity: 1;
   }
 }
+
+@keyframes typewriter {
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
 .heart-glow {
   font-size: 40px;
   animation: pulse 1.5s infinite;
