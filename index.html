@@ -19,12 +19,9 @@
     </audio>
   </div>
 
-  <!-- Confetti Library -->
+  <!-- Confetti effect -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
   <script>
-    const playButton = document.getElementById('playButton');
-    const music = document.getElementById('birthdayMusic');
     const text = "From the moment I saw you, my world changed forever. Every smile, every touch, every laugh—we've created a love story sweeter than any dream. You are my today and all of my tomorrows. Love u as always 🐼💗";
     const target = document.getElementById('romanticText');
     let index = 0;
@@ -39,18 +36,20 @@
 
     window.onload = () => {
       typeWriter();
-
       confetti({
         particleCount: 200,
         spread: 160,
         origin: { y: 0.6 }
       });
-
-      playButton.addEventListener('click', () => {
-        music.play();
-        playButton.style.display = 'none';
-      });
     };
+
+    const playButton = document.getElementById('playButton');
+    const music = document.getElementById('birthdayMusic');
+
+    playButton.addEventListener('click', () => {
+      music.play();
+      playButton.style.display = 'none';
+    });
   </script>
 </body>
 </html>
