@@ -19,8 +19,7 @@
   </div>
 
   <!-- Confetti effect -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-  <script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js">
     window.onload = () => {
       confetti({
         particleCount: 200,
@@ -28,9 +27,6 @@
         origin: { y: 0.6 }
       });
     };
-  </script>
-
-  <script>
     const playButton = document.getElementById('playButton');
     const music = document.getElementById('birthdayMusic');
 
@@ -38,8 +34,6 @@
       music.play();
       playButton.style.display = 'none'; // Hide button after playing
     });
-  </script>
-  <script>
   const text = "From the moment I saw you, my world changed forever. Every smile, every touch, every laugh—we've created a love story sweeter than any dream. You are my today and all of my tomorrows. Love u as always 🐼💗";
   const target = document.getElementById('romanticText');
   let index = 0;
