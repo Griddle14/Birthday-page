@@ -173,3 +173,27 @@ button:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
+/* Optional: Make text and containers slightly larger on small phones */
+@media (max-width: 480px) {
+  .container {
+    padding: 30px 20px;
+  }
+
+  h1 {
+    font-size: 1.8em;
+  }
+
+  p, .fade-in-text {
+    font-size: 1em;
+  }
+
+  .image-gallery img {
+    width: 100px;
+    height: 100px;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
