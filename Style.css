@@ -28,7 +28,7 @@ h1 {
   font-size: 1.2em;
   margin-top: 20px;
   font-weight: 500;
-  white-space: nowrap;
+  white-space: pre-wrap;
   overflow: hidden;
   border-right: 2px solid #ff69b4;
   width: 0;
