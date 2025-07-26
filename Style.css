@@ -100,10 +100,7 @@ button:hover {
     font-size: 16px;
   }
 }
-
 .fade-in-text {
-  opacity: 0;
-  animation: fadeInText 2s forwards;
   font-size: 1.2em;
   margin-top: 20px;
   font-weight: 500;
@@ -111,9 +108,9 @@ button:hover {
   overflow: hidden;
   border-right: 2px solid #ff69b4;
   width: 0;
+  color: #333;
   animation: typewriter 5s steps(40) 1s forwards, blink 0.75s step-end infinite;
 }
-
 @keyframes fadeInText {
   to {
     opacity: 1;
