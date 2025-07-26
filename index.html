@@ -7,6 +7,24 @@
     Pondati! 💖</title>
   <link rel="stylesheet" href="Style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand&display=swap" rel="stylesheet">
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const images = document.querySelectorAll(".image-gallery img");
+
+    images.forEach(img => {
+      img.addEventListener("click", () => {
+        img.classList.toggle("fullscreen");
+      });
+    });
+
+    // Tap anywhere to close fullscreen
+    document.addEventListener("click", function (e) {
+      if (e.target.classList.contains("fullscreen")) {
+        e.target.classList.remove("fullscreen");
+      }
+    });
+  });
+  </script>
 </head>
 <body>
   <div class="container">
