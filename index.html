@@ -3,46 +3,123 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title> Happy Birthday 
-    Pondati! 💖</title>
-  <link rel="stylesheet" href="Style.css" />
+  <title>Happy Birthday Pondati! 💖</title>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand&display=swap" rel="stylesheet">
-  <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const images = document.querySelectorAll(".image-gallery img");
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(to right, #ffdde1, #ee9ca7);
+      text-align: center;
+      color: #fff;
+      overflow-x: hidden;
+    }
 
-    images.forEach(img => {
-      img.addEventListener("click", () => {
-        img.classList.toggle("fullscreen");
-      });
-    });
+    .container {
+      padding: 20px;
+    }
 
-    // Tap anywhere to close fullscreen
-    document.addEventListener("click", function (e) {
-      if (e.target.classList.contains("fullscreen")) {
-        e.target.classList.remove("fullscreen");
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2em;
+      margin-top: 20px;
+    }
+
+    .image-gallery {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .image-gallery img {
+      width: 100px;
+      height: 100px;
+      border-radius: 10px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .image-gallery img.fullscreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: contain;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      border-radius: 0;
+    }
+
+    #romanticText {
+      font-size: 1.2em;
+      margin-top: 20px;
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    #playButton {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: #ff5e78;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    #playButton:hover {
+      background-color: #ff385c;
+    }
+
+    .heart-glow {
+      font-size: 2em;
+      animation: glow 1s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px red; }
+      to { text-shadow: 0 0 20px pink; }
+    }
+
+    @media (max-width: 600px) {
+      .image-gallery img {
+        width: 90px;
+        height: 90px;
       }
-    });
-  });
-  </script>
+
+      h1 {
+        font-size: 1.5em;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <div class="heart-glow">❤️</div>
     <h1>🎉 Happy Birthday, Pondati 🐼💖</h1>
+
     <div class="image-gallery">
-  <img src="Griddle.jpg" alt="Love 1" />
-  <img src="your-image2.jpg" alt="Love 2" />
-  <img src="your-image3.jpg" alt="Love 3" />
-</div>
+      <img src="Griddle.jpg" alt="Love 1" />
+      <img src="your-image2.jpg" alt="Love 2" />
+      <img src="your-image3.jpg" alt="Love 3" />
+    </div>
+
     <p id="romanticText" class="fade-in-text"></p>
+
     <button id="playButton">🎵 Tap to Play Music</button>
     <audio id="birthdayMusic" loop>
       <source src="song.mp3" type="audio/mpeg">
     </audio>
   </div>
 
-  <!-- Confetti effect -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script>
     const text = "From the moment I saw you, my world changed forever. Every smile, every touch, every laugh—we've created a love story sweeter than any dream. You are my today and all of my tomorrows. Love u as always 🐼💗";
@@ -51,7 +128,7 @@
 
     function typeWriter() {
       if (index < text.length) {
-        target.innerHTML += text.charAt(index);
+        target.textContent += text.charAt(index);
         index++;
         setTimeout(typeWriter, 50);
       }
@@ -72,6 +149,21 @@
     playButton.addEventListener('click', () => {
       music.play();
       playButton.style.display = 'none';
+    });
+
+    const images = document.querySelectorAll(".image-gallery img");
+
+    images.forEach(img => {
+      img.addEventListener("click", (e) => {
+        e.stopPropagation();
+        img.classList.toggle("fullscreen");
+      });
+    });
+
+    document.addEventListener("click", function (e) {
+      if (e.target.classList.contains("fullscreen")) {
+        e.target.classList.remove("fullscreen");
+      }
     });
   </script>
 </body>
