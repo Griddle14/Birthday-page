@@ -99,6 +99,45 @@
         font-size: 1.5em;
       }
     }
+    /* Door Panels */
+.door {
+  position: fixed;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: #ff69b4; /* Pink background for the doors */
+  z-index: 9999;
+}
+
+.door.left {
+  left: 0;
+  animation: doorLeft 1.5s ease forwards;
+}
+
+.door.right {
+  right: 0;
+  animation: doorRight 1.5s ease forwards;
+}
+
+@keyframes doorLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes doorRight {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(100%); }
+}
+
+/* Make content fade in after doors open */
+body {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+body.loaded {
+  opacity: 1;
+}
   </style>
 </head>
 <body>
