@@ -6,22 +6,32 @@
   <title>Happy Birthday Pondati! 💖</title>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand&display=swap" rel="stylesheet">
   <style>
+    /* Background with color shift animation */
     body {
       margin: 0;
       padding: 0;
       font-family: 'Quicksand', sans-serif;
-      background: linear-gradient(to right, #ffdde1, #ee9ca7);
+      background: linear-gradient(-45deg, #ffdde1, #ee9ca7, #fad0c4, #ff9a9e);
+      background-size: 400% 400%;
+      animation: bgShift 10s ease infinite;
       text-align: center;
       color: #fff;
       overflow-x: hidden;
       opacity: 0;
-      transition: opacity 0.5s ease;
+      transition: opacity 1s ease;
     }
     body.loaded {
       opacity: 1;
     }
+    @keyframes bgShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-    .container { padding: 20px; }
+    .container {
+      padding: 20px;
+    }
 
     h1 {
       font-family: 'Pacifico', cursive;
@@ -77,51 +87,59 @@
       cursor: pointer;
       transition: 0.3s;
     }
-    #playButton:hover { background-color: #ff385c; }
+
+    #playButton:hover {
+      background-color: #ff385c;
+    }
 
     .heart-glow {
       font-size: 2em;
       animation: glow 1s infinite alternate;
     }
+
     @keyframes glow {
       from { text-shadow: 0 0 10px red; }
       to { text-shadow: 0 0 20px pink; }
     }
 
     @media (max-width: 600px) {
-      .image-gallery img { width: 90px; height: 90px; }
-      h1 { font-size: 1.5em; }
+      .image-gallery img {
+        width: 90px;
+        height: 90px;
+      }
+      h1 {
+        font-size: 1.5em;
+      }
     }
 
-    /* Door Panels */
+    /* Heart-shaped door panels */
     .door {
       position: fixed;
       top: 0;
       width: 50%;
       height: 100%;
-      background: #ff69b4;
+      background: pink;
       z-index: 9999;
+      transition: transform 2s ease;
     }
     .door.left {
       left: 0;
-      animation: doorLeft 1.5s ease forwards;
+      border-top-right-radius: 50% 100%;
     }
     .door.right {
       right: 0;
-      animation: doorRight 1.5s ease forwards;
+      border-top-left-radius: 50% 100%;
     }
-    @keyframes doorLeft {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
+    .door.open.left {
+      transform: translateX(-100%);
     }
-    @keyframes doorRight {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(100%); }
+    .door.open.right {
+      transform: translateX(100%);
     }
   </style>
 </head>
 <body>
-  <!-- Door Opening Panels -->
+  <!-- Heart Doors -->
   <div class="door left"></div>
   <div class="door right"></div>
 
@@ -145,9 +163,23 @@
 
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script>
+    // Heart door animation
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        document.querySelector(".door.left").classList.add("open");
+        document.querySelector(".door.right").classList.add("open");
+      }, 300);
+
+      setTimeout(() => {
+        document.body.classList.add("loaded");
+      }, 2000);
+    });
+
+    // Typing romantic text
     const text = "From the moment I saw you, my world changed forever. Every smile, every touch, every laugh—we've created a love story sweeter than any dream. You are my today and all of my tomorrows. Love u as always 🐼💗";
     const target = document.getElementById('romanticText');
     let index = 0;
+
     function typeWriter() {
       if (index < text.length) {
         target.textContent += text.charAt(index);
@@ -156,6 +188,16 @@
       }
     }
 
+    window.onload = () => {
+      typeWriter();
+      confetti({
+        particleCount: 200,
+        spread: 160,
+        origin: { y: 0.6 }
+      });
+    };
+
+    // Play music
     const playButton = document.getElementById('playButton');
     const music = document.getElementById('birthdayMusic');
     playButton.addEventListener('click', () => {
@@ -163,6 +205,7 @@
       playButton.style.display = 'none';
     });
 
+    // Image fullscreen on click
     const images = document.querySelectorAll(".image-gallery img");
     images.forEach(img => {
       img.addEventListener("click", (e) => {
@@ -174,19 +217,6 @@
       if (e.target.classList.contains("fullscreen")) {
         e.target.classList.remove("fullscreen");
       }
-    });
-
-    // Run after doors open
-    window.addEventListener("load", () => {
-      setTimeout(() => {
-        document.body.classList.add("loaded");
-        typeWriter();
-        confetti({
-          particleCount: 200,
-          spread: 160,
-          origin: { y: 0.6 }
-        });
-      }, 1500); // Matches door animation
     });
   </script>
 </body>
